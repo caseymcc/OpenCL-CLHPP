@@ -3,9 +3,9 @@ cmake_minimum_required(VERSION 3.3)
 hunter_add_package(OpenCL)
 find_package(OpenCL CONFIG REQUIRED)
 
-project(OpenCL-clhpp VERSION 2.0.10)
+project(OpenCL-cpp VERSION 2.0.10)
 
-if(NOT OPENCL_CLHPP_VERSION2_ONLY)
+if(NOT OPENCLPP_VERSION2_ONLY)
 	find_package(PythonInterp)
 
 	if(PYTHONINTERP_FOUND)
@@ -29,8 +29,8 @@ add_custom_command(
     COMMENT "Rebuilding cl2.hpp ...")
 add_custom_target(generate_cl2hpp ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/CL/cl2.hpp SOURCES ${CLCPP_SOURCE_DIR}/input_cl2.hpp)
 
-add_library(OpenCL-clhpp INTERFACE)
-target_link_libraries(OpenCL-clhpp INTERFACE OpenCL::OpenCL)
+add_library(OpenCL-cpp INTERFACE)
+target_link_libraries(OpenCL-cpp INTERFACE OpenCL::OpenCL)
 	
 #Installation
 set(generated_dir "${CMAKE_CURRENT_BINARY_DIR}/generated")
@@ -51,7 +51,7 @@ configure_package_config_file("Config.cmake.in" "${project_config}"
 )
 
 install(
-    TARGETS OpenCL-clhpp
+    TARGETS OpenCL-cpp
     EXPORT "${targets_export_name}"
     LIBRARY DESTINATION "lib"
     ARCHIVE DESTINATION "lib"
