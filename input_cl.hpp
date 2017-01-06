@@ -226,9 +226,9 @@
 #include <string>
 #endif 
 
-#if defined(__ANDROID__) || defined(linux) || defined(__APPLE__) || defined(__MACOSX) || defined(MSYS)
+#if defined(__ANDROID__) || defined(linux) || defined(__APPLE__) || defined(__MACOSX) || defined(__GNUC__)
 #include <alloca.h>
-#endif // linux or msys on windows
+#endif // linux or gcc on windows
 
 #include <cstring>
 
