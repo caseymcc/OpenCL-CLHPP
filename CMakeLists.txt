@@ -1,10 +1,20 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.0)
+
+include(HunterGate.cmake)
+
+HunterGate(
+    URL "https://github.com/ruslo/hunter/archive/v0.17.12.tar.gz"
+    SHA1 "74cfa490ef0d3ff8916523bbf5add53049aad7be"
+)
+
+
 project(CLCPP)
 enable_testing()
 
 option(BUILD_DOCS "Build Documentation" ON)
 option(BUILD_EXAMPLES "Build Examples" ON)
 option(BUILD_TESTS "Build Unit Tests" ON)
+option(OPENCL_CLHPP_VERSION2_ONLY "Gernerate only cl2.hpp" OFF)
 
 if(DEFINED ENV{AMDAPPSDKROOT})
   set(OPENCL_DIST_DIR $ENV{AMDAPPSDKROOT} CACHE PATH "OpenCL source dir")
